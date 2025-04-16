@@ -5,7 +5,7 @@ import useFetch from "../useFetch"
 //http://localhost:3000/events/67f91e36973ba42efd67f4a3
 const EventDetails = () => {
     const {eventID} = useParams()
-    const {data,loading,error} = useFetch(`http://localhost:3000/events/${eventID}`)
+    const {data,loading,error} = useFetch(`https://neog-meetup-backend.vercel.app/events/${eventID}`)
      
     // console.log(data&& JSON.stringify(data,null,2))
   return (

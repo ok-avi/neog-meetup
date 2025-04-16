@@ -7,7 +7,7 @@ const App = () => {
   const [eventType,setEventType] = useState("Both")
   const [search,setSearch] = useState("")
   // const [filteredEvent,setFilteredEvent] = useState()
-  const {data, loading, error} = useFetch("http://localhost:3000/events")
+  const {data, loading, error} = useFetch("https://neog-meetup-backend.vercel.app/events")
   
   let filteredEvent = eventType==="Both"?data : data?.filter(event=>event.type===eventType)
   // console.log(filteredEvent,data)
