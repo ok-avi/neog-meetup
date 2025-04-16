@@ -29,14 +29,14 @@ const App = () => {
   
   
 
-  function searchHandler(e){
-    e.preventDefault()
+  // function searchHandler(e){
+  //   e.preventDefault()
     
-  }
-  // function selectHandler(e){
-  //   setSearch("")
-  //   setEventType(e.target.value)
   // }
+  function selectHandler(e){
+    setSearch("")
+    setEventType(e.target.value)
+  }
     // console.log(filteredEvent)
   return (
     <>
