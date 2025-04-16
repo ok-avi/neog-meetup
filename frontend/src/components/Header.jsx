@@ -11,12 +11,7 @@ const Header = ({search,setSearch,searchHandler}) => {
         <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="justify-content-end collapse navbar-collapse" id="navbarSupportedContent">
-          <form className="mt-2 d-flex" role="search">
-            <input value={search} onChange={(e)=>setSearch(e.target.value)} className="form-control me-2" type="search" placeholder="Search by title and tags" aria-label="Search" />
-            <button onClick={searchHandler} className="btn btn-outline-secondary  fw-medium" type="submit">Search</button>
-          </form>
-        </div>
+        
       </div>
     </nav>
   )
