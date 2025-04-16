@@ -5,11 +5,25 @@ import { useState } from "react"
 
 const App = () => {
   const [eventType,setEventType] = useState("Both")
-  const [search,setSearch] = useState("")
+  const [search,setSearch] = useState()
   // const [filteredEvent,setFilteredEvent] = useState()
   const {data, loading, error} = useFetch("https://neog-meetup-backend.vercel.app/events")
   
-  let filteredEvent = eventType==="Both"?data : data?.filter(event=>event.type===eventType)
+  // let filteredEvent = search?data.filter(event=>event.type.toLowerCase()===search.toLowerCase().trim() ||event.title.toLowerCase()===search.toLowerCase().trim()) : eventType==="Both"?data : data?.filter(event=>event.type===eventType)
+  let filteredEvent;
+
+  if (search) {
+    const searchText = search.toLowerCase().trim();
+    filteredEvent = data.filter(event =>
+      event.tags.find(tag=>tag.toLowerCase()===searchText)  ||
+      event.title.toLowerCase() === searchText
+    );
+  } else if (eventType === "Both") {
+    filteredEvent = data;
+  } else {
+    filteredEvent = data?.filter(event => event.type === eventType);
+  }
+
   // console.log(filteredEvent,data)
   // data&&setFilteredEvent(data)
   
@@ -17,25 +31,32 @@ const App = () => {
 
   function searchHandler(e){
     e.preventDefault()
-    // console.log(search.length,search,search.trim())
-     filteredEvent = data&&data.filter(event=>event.type.toLowerCase()===search.toLowerCase().trim())
+    
   }
-    console.log(filteredEvent)
+  // function selectHandler(e){
+  //   setSearch("")
+  //   setEventType(e.target.value)
+  // }
+    // console.log(filteredEvent)
   return (
     <>
-      <Header search={search} setSearch={setSearch} searchHandler={searchHandler
-
-      }  />
+      <Header  />
       <main className="px-5 pb-4">
         <hr className="" />
         <div className="mb-3 row py-3">
-          <h1 className="col-sm-6 fw-bold">Meetup Events </h1>
-          <div className="col-sm-6 ">
-            <select  onChange={(e)=>setEventType(e.target.value)} className="form-select w-50 float-end">
+          <h1 className="col-sm-4 fw-bold">Meetup Events </h1>
+          <div className="col-sm-4 ">
+            <select  onChange={selectHandler} className="form-select w-50 float-end">
               <option value="Both">Select Event Type</option>
               <option value="Online">Online</option>
               <option value="Offline">Offline</option>
             </select>
+          </div>
+          <div className="col-sm-4">
+            <form className=" d-flex" role="search">
+              <input value={search} onChange={(e)=>setSearch(e.target.value)} className="form-control me-2" type="search" placeholder="Search by title and tags" aria-label="Search" />
+              {/* <button onClick={searchHandler} className="btn btn-outline-secondary  fw-medium" type="submit">Search</button> */}
+            </form>
           </div>
         </div>
         <div className="row g-4 ">
