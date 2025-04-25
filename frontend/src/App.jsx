@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import Header from "./components/Header"
 import useFetch from "./useFetch.jsx"
 import { useState } from "react"
+import Loading from "./components/Loading.jsx"
 
 const App = () => {
   const [eventType,setEventType] = useState("Both")
@@ -60,6 +61,7 @@ const App = () => {
           </div>
         </div>
         <div className="row g-4 ">
+        {loading&&<Loading/>}
           {filteredEvent&&(
             filteredEvent.map(event=>(
               <div className="col-sm-4 ">

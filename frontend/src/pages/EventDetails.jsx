@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import Header from "../components/Header"
 import useFetch from "../useFetch"
+import Loading from "../components/Loading"
 
 //http://localhost:3000/events/67f91e36973ba42efd67f4a3
 const EventDetails = () => {
@@ -57,7 +58,7 @@ const EventDetails = () => {
                     </section>
                 </div>
             </div>
-            :<p>loading...</p>}
+            :<Loading/>}
         </main>
     </>
   )
