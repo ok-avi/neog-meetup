@@ -14,8 +14,8 @@ const EventDetails = () => {
         <Header />
         <main className="px-5 pb-4">
             <hr />
-            {data?<div className="row ">
-                <div className="col-md-6">
+            {data?<div className="row g-5">
+                <div className="col-md-6 ">
                     <h1 className=" mb-4">{data.title}</h1>
                     <p className="mb-0">Hosted By:</p>
                     <h4>{data.hostedBy}</h4>
@@ -36,15 +36,39 @@ const EventDetails = () => {
                     </section>
                 </div>
                 <div className="col-md-6 py-3">
-                    <section className="py-3 px-4 bg-body-secondary rounded my-3">
-                        <div className="py-2 ">
-                            <p className="my-0">{data.startTime} to</p>
-                            <p className="my-0">{data.endTime}</p>
+                    <section className="py-3 px-4 bg-body-secondary rounded my-3 ">
+                        <div className="py-2 row">
+                            <div className="col-3">
+                                <div>
+                                    <strong>Start Time: </strong>
+                                    <span className="float-end">---&#62;</span>
+                                </div>
+                                <div>
+                                    <strong>End Time: </strong>
+                                    <span className="float-end">---&#62;</span>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <p className="my-0">{data.startTime} to</p>
+                                <p className="my-0">{data.endTime}</p>
+                            </div>
                         </div>
-                        <div className="py-2">
-                            <p>{data.address.city} <br /> {data.address.pincode} {data.address.state}, {data.address.country}</p>
+                        <div className="py-2 row">
+                            <div className="col-3">
+                                <span ><strong>Address: </strong></span>
+                                <span className="float-end">---&#62;</span>
+                            </div>
+                            <div className="col">
+                                <p >{data.address.city} <br /> {data.address.pincode} {data.address.state}, {data.address.country}</p>
+                            </div>
                         </div>
-                        <p> <span>&#8377;</span> {data.pricing}</p>
+                        <div className="row">
+                            <div className="col-3">
+                                <strong>Pricing:</strong> 
+                                <span className="float-end">---&#62;</span>
+                            </div>
+                            <div className="col"><span>&#8377;</span>{data.pricing===Number&&"hello"} {data.pricing}</div>
+                        </div>
                     </section>
                     <section>
                         <h3>Speakers: ({data.speakers.length})</h3>
