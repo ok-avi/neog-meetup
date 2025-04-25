@@ -67,7 +67,7 @@ const EventDetails = () => {
                                 <strong>Pricing:</strong> 
                                 <span className="float-end">---&#62;</span>
                             </div>
-                            <div className="col"><span>&#8377;</span>{data.pricing===Number&&"hello"} {data.pricing}</div>
+                            <div className="col">{data.pricing.toString()!=="free"&&<span>&#8377;</span>} {data.pricing}</div>
                         </div>
                     </section>
                     <section>
