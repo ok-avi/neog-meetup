@@ -49,7 +49,7 @@ const EventDetails = () => {
                     <section>
                         <h3>Speakers: ({data.speakers.length})</h3>
                         <div className="row gx-3 mt-4">
-                            {data.speakers.map(speaker=><div className=" mx-auto mb-3 py-4 text-center col-sm-4 bg-body-secondary  rounded">
+                            {data.speakers.map(speaker=><div className="me-4  mb-3 py-4 text-center col-sm-4 bg-body-secondary  rounded">
                                 <img className="img-fluid rounded-circle " src={speaker.imageUrl} alt="" />
                                 <h4 className="mb-0 mt-3">{speaker.name}</h4>
                                 <p className="mt-0">{speaker.designation}</p>
